@@ -1,7 +1,12 @@
 package com.example.demox.entity;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name="books")
+@Setter
+@Getter
 
 public class Book {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "books_setup_seq_gen")
@@ -15,10 +20,13 @@ public class Book {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ground_id", referencedColumnName = "id",
             foreignKey = @ForeignKey(name = "pk_id_fk_ground_id"))
-    private com.example.demo.entity.Ground ground;
+    private com.example.demox.entity.Ground ground;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id",
             foreignKey = @ForeignKey(name = "pk_id_fk_user_id"))
     private User user;
+
+    public void setName(String bookName) {
+    }
 }

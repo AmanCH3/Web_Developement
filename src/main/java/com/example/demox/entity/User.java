@@ -1,9 +1,11 @@
 package com.example.demox.entity;
 import jakarta.persistence.*;
+import lombok.Setter;
 
 
 @Entity
 @Table(name="users")
+@Setter
 public class User {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_setup_seq_gen")
     @SequenceGenerator(name = "users_setup_seq_gen", sequenceName = "users_setup_seq", allocationSize = 1)

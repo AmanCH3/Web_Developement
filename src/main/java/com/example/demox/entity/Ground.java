@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package com.example.demox.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
