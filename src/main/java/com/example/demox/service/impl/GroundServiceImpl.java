@@ -8,13 +8,16 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-@Setter
-@Getter
+
 @Repository
 @RequiredArgsConstructor
+@Service
+
+
 
 
 public class GroundServiceImpl implements GroundService{

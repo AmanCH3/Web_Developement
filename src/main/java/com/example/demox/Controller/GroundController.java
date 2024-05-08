@@ -1,33 +1,25 @@
 package com.example.demox.Controller;
 
 import com.example.demox.Pojo.GroundPojo;
-import com.example.demox.service.GroundService;
 import com.example.demox.entity.Ground;
+import com.example.demox.service.GroundService;
 import com.example.demox.shared.pojo.GlobalApiResponse;
 import lombok.RequiredArgsConstructor;
-
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 
 import java.util.List;
 import java.util.Optional;
 
-import static org.springframework.http.codec.ServerSentEvent.builder;
-
 @RestController
 @RequestMapping("/ground")
 @RequiredArgsConstructor
-
-
-
 
 public class GroundController {
 
     private final GroundService groundService;
 
     @GetMapping
-    public GlobalApiResponse <List<Ground>> getData() {
+    public GlobalApiResponse<List<Ground>> getData() {
         return GlobalApiResponse.
                 <List<Ground>>builder()
                 .data(this.groundService.getAll())
@@ -35,6 +27,7 @@ public class GroundController {
                 .message("data retreived successfully")
                 .build();
     }
+
     @PostMapping
     public GlobalApiResponse<String> save(@RequestBody GroundPojo groundPojo) {
         this.groundService.saveData(groundPojo);
@@ -45,9 +38,6 @@ public class GroundController {
                 .message("data saved successfully")
                 .build();
     }
-
-
-
 
 
 //    @PostMapping("/save")
@@ -67,7 +57,7 @@ public class GroundController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable Integer id){
+    public void delete(@PathVariable Integer id) {
 
         this.groundService.deleteById(id);
     }
@@ -76,10 +66,6 @@ public class GroundController {
     public void update(@RequestBody GroundPojo groundPojo) {
         this.groundService.saveData(groundPojo);
     }
-
-
-
-
 
 
 }

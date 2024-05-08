@@ -7,9 +7,12 @@ import com.example.demox.Repository.UserRespository;
 import com.example.demox.entity.Book;
 import com.example.demox.entity.Ground;
 import com.example.demox.entity.User;
+import com.example.demox.projection.BookProjection;
 import com.example.demox.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -34,5 +37,15 @@ public class BookServiceImpl implements BookService {
         bookRespository.save(book);
 
 
+    }
+
+    @Override
+    public List<Ground> findAll() {
+        return List.of();
+    }
+
+    @Override
+    public List<BookProjection> findAll2() {
+        return List.of();
     }
 }
