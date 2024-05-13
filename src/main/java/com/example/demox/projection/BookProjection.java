@@ -5,4 +5,5 @@ public interface BookProjection {
     String getBookName() ;
     String getGroundID() ;
     Integer getUserID();
+
 }
