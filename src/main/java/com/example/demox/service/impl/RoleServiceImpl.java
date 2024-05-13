@@ -21,15 +21,26 @@ public class RoleServiceImpl implements RoleService {
         return List.of();
     }
 
+    @Override
+    public Role findById(Integer id) {
+        return null;
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+
+    }
+
     private  final RoleRespository roleRespository ;
 
 
 
-    public void saveData(RolePojo rolePojo){
+    public Role saveData(RolePojo rolePojo){
         Role role  = new Role() ;
         role.setRoleName(rolePojo.getRoleName()); ;
         role.setRoleType(rolePojo.getRoleType()); ;
 
         roleRespository.save(role) ;
+        return role;
     }
 }

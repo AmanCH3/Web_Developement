@@ -36,6 +36,33 @@ public class UserController {
                 .build();
 
 
+
+
+
+    }
+
+    @PutMapping
+    public GlobalApiResponse<User> update(@RequestBody UserPojo userPojo) {
+        User updateUser = this.userService.saveUser(userPojo);
+        return  GlobalApiResponse.<User>builder()
+                .data(updateUser)
+                .statusCode(200)
+                . message("data update successfully")
+                .build() ;
+
+    }
+
+    @DeleteMapping("delete/{id}")
+    public GlobalApiResponse<String> delete(@PathVariable int id) {
+
+        this.userService.deleteById(id);
+        return GlobalApiResponse.<String>builder().
+                data("User entry with id "  + id  + "has be deleted")
+                .statusCode(200)
+                .message("data delete succesfuuly")
+                .build() ;
+
+
     }
 //    @PostMapping
 //    public void saveUser(@RequestBody UserPojo userPojo) {

@@ -4,9 +4,7 @@ import com.example.demox.Pojo.GroundPojo;
 import com.example.demox.Repository.GroundRespository;
 import com.example.demox.entity.Ground ;
 import com.example.demox.service.GroundService;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
@@ -23,11 +21,12 @@ import java.util.Optional;
 public class GroundServiceImpl implements GroundService{
     private final GroundRespository groundRespository;
     @Override
-    public  void saveData(GroundPojo groundPojo){
+    public Ground saveData(GroundPojo groundPojo){
         Ground ground = new Ground();
         ground.setId(groundPojo.getId());
         ground.setGroundName(groundPojo.getGroundName());
         groundRespository.save(ground);
+        return ground;
     }
     public List<Ground> getAll(){
         return groundRespository.findAll();

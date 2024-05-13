@@ -24,7 +24,7 @@ public class BookServiceImpl implements BookService {
 
 
     @Override
-    public void saveData(BookPojo bookPojo) {
+    public Book saveData(BookPojo bookPojo) {
         Book book = new Book();
 //        book.setId(bookPojo.getId()) ;
 //        book.setGroundId(bookPojo.getId()) ;
@@ -37,6 +37,7 @@ public class BookServiceImpl implements BookService {
         bookRespository.save(book);
 
 
+        return book;
     }
 
     @Override
@@ -47,5 +48,10 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<BookProjection> findAll2() {
         return List.of();
+    }
+
+    @Override
+    public void deleteAll(BookPojo bookPojo) {
+
     }
 }

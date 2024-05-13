@@ -51,20 +51,41 @@ public class GroundController {
 //        return null;
 //    }
 
-    @GetMapping("/get/{id}")
-    public Optional<Ground> getDataById(@PathVariable int id) {
-        return groundService.findById(id);
-    }
-
-    @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable Integer id) {
-
-        this.groundService.deleteById(id);
-    }
+//    @GetMapping("/get/{id}")
+//    public Optional<Ground> getDataById(@PathVariable int id) {
+//        return groundService.findById(id);
+//    }
+//
+//    @DeleteMapping("/delete/{id}")
+//    public void delete(@PathVariable Integer id) {
+//
+//        this.groundService.deleteById(id);
+//    }
+//
+//    @PutMapping
+//    public void update(@RequestBody GroundPojo groundPojo) {
+//        this.groundService.saveData(groundPojo);
+//    }
 
     @PutMapping
-    public void update(@RequestBody GroundPojo groundPojo) {
-        this.groundService.saveData(groundPojo);
+    public GlobalApiResponse <Ground> update(@RequestBody GroundPojo groundPojo) {
+        Ground updateGround = this.groundService.saveData(groundPojo);
+        return  GlobalApiResponse.<Ground>builder()
+                .data(updateGround)
+                .statusCode(200)
+                .message("Data Updated sucessfully")
+                .build();
+    }
+
+    @DeleteMapping("delete/{id}")
+    public GlobalApiResponse<String> delete(@PathVariable int id) {
+        this.groundService.deleteById(id);
+        return GlobalApiResponse.<String>builder()
+                .data("Ground entity with  ID " + id + "delete successfully")
+                .statusCode(200)
+                .message("data delete successfully")
+                .build() ;
+
     }
 
 

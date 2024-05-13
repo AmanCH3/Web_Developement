@@ -10,7 +10,10 @@ import java.util.List;
 @Repository
 public interface RoleService {
 
-    void saveData(RolePojo rolePojo) ;
+    Role saveData(RolePojo rolePojo) ;
     List<Role> findAll();
+    Role findById(Integer id);
+    void deleteById(Integer id);
+
 
 }

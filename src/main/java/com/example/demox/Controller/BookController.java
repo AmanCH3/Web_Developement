@@ -1,6 +1,7 @@
 package com.example.demox.Controller;
 
 import com.example.demox.Pojo.BookPojo;
+import com.example.demox.entity.Book;
 import com.example.demox.entity.Ground;
 import com.example.demox.service.BookService;
 import com.example.demox.shared.pojo.GlobalApiResponse;
@@ -47,6 +48,26 @@ public class BookController {
                 .message("data saved successfully")
                 .build();
     }
+    @PutMapping
+    public GlobalApiResponse<Book> update(@RequestBody BookPojo bookPojo){
+        Book updateBook  = this.bookService.saveData(bookPojo);
+        return  GlobalApiResponse.<Book>builder()
+                .data(updateBook)
+                .statusCode(200)
+                .message("Data has been updated succefully")
+                .build() ;
+    }
+
+    @DeleteMapping("/delete")
+    public GlobalApiResponse<String> deleteBook(@RequestBody BookPojo bookPojo) {
+        this.bookService.deleteAll(bookPojo);
+        return GlobalApiResponse.<String>builder()
+                .data("Book with groundId " + bookPojo.getGroundId() + ", bookName " + bookPojo.getBookName() + ", and userId " + bookPojo.getUserId() + " deleted successfully")
+                .statusCode(200)
+                .message("Data deleted successfully")
+                .build();
+    }
+
 
 
 }

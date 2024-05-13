@@ -40,4 +40,24 @@ private final RoleService roleService;
                .build();
 
    }
+
+  @PutMapping
+    public GlobalApiResponse<Role> update(@RequestBody RolePojo rolePojo) {
+        Role updateRole = this.roleService.saveData(rolePojo);
+        return GlobalApiResponse.<Role>builder().
+                data(updateRole)
+                .statusCode(200)
+                .message("Data has been successfully updated")
+                .build();
+  }
+  @DeleteMapping("delete/{id}")
+    public GlobalApiResponse<String> delete(@PathVariable int id) {
+        this.roleService.deleteById(id);
+        return GlobalApiResponse.<String>builder().
+                data("Role with id "+ id+"has been deleted successfully")
+                .statusCode(200)
+                .message("Data deleted succesfully")
+                .build();
+  }
+
 }
