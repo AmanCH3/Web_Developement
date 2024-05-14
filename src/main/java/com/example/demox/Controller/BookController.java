@@ -2,7 +2,7 @@ package com.example.demox.Controller;
 
 import com.example.demox.Pojo.BookPojo;
 import com.example.demox.entity.Book;
-import com.example.demox.entity.Ground;
+import com.example.demox.projection.BookProjection;
 import com.example.demox.service.BookService;
 import com.example.demox.shared.pojo.GlobalApiResponse;
 import lombok.RequiredArgsConstructor;
@@ -29,9 +29,9 @@ public class BookController {
 //    }
 
     @GetMapping
-    public GlobalApiResponse<List<Ground>> getData() {
+    public GlobalApiResponse<List<BookProjection>> getData(BookProjection bookProjection) {
         return GlobalApiResponse.
-                <List<Ground>>builder()
+                <List<BookProjection>>builder()
                 .data(this.bookService.findAll())
                 .statusCode(200)
                 .message("data retreived successfully")
@@ -67,6 +67,7 @@ public class BookController {
                 .message("Data deleted successfully")
                 .build();
     }
+
 
 
 

@@ -41,7 +41,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Ground> findAll() {
+    public List<BookProjection> findAll() {
         return List.of();
     }
 
