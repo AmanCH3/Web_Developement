@@ -12,7 +12,6 @@ import java.util.List;
 
 
 @Service
-@Repository
 @RequiredArgsConstructor
 
 public class RoleServiceImpl implements RoleService {
@@ -28,6 +27,7 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public void deleteById(Integer id) {
+
 
     }
 

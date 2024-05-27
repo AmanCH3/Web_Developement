@@ -5,6 +5,7 @@ import com.example.demox.entity.Role;
 import com.example.demox.service.RoleService;
 import com.example.demox.shared.pojo.GlobalApiResponse;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/role")
-@AllArgsConstructor
+@RequiredArgsConstructor
 
 public class RoleController {
 
@@ -44,7 +45,7 @@ private final RoleService roleService;
   @PutMapping
     public GlobalApiResponse<Role> update(@RequestBody RolePojo rolePojo) {
         Role updateRole = this.roleService.saveData(rolePojo);
-        return GlobalApiResponse.<Role>builder().
+        return GlobalApiResponse.   <Role>builder().
                 data(updateRole)
                 .statusCode(200)
                 .message("Data has been successfully updated")

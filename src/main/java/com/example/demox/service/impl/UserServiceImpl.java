@@ -15,7 +15,6 @@ import java.util.Optional;
 
 
 @Service
-@Repository
 @RequiredArgsConstructor
 
 
@@ -40,7 +39,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteById(int id) {
-
+         userRespository.deleteById(id);
     }
 
     @Override
